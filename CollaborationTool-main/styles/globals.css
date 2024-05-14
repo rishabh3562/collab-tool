@@ -1,0 +1,71 @@
+/*fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+
+/*tailwind*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg-color:hsl(256,33,10);
+  --dot-color:hsl(256,33,70);
+  --dot-size: 1px;
+  --dot-space: 22px;
+}
+
+@layer base{
+*{
+  @apply m-0 p-0 box-border;
+}
+body{
+  @apply w-full min-h-screen font-M bg-[#121212] ; 
+}
+}
+
+@layer components{
+.primary-input{
+  @apply border-none outline-none p-5 text-[1rem] w-[370px] rounded-md bg-white/10
+}
+.primary-gradient{
+@apply bg-gradient-to-r from-green-400 to-yellow-300 
+}
+.text-gradient{
+@apply text-transparent primary-gradient bg-clip-text}
+.sec-gradient{
+@apply bg-gradient-to-r from-purple-500 via-purple-400 to-white 
+}
+.selection-box{
+@apply w-full relative trans cursor-pointer p-4  text-black/60 font-semibold  text-xl rounded-md;
+}
+.trans{
+@apply transition-all duration-200;
+}
+.absolute-center{
+  @apply top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]
+}
+.hero-image{
+    @apply h-[190px] cursor-pointer background-animate hover:z-[1000] hover:border-[10px] hover:border-transparent bg-clip-border primary-gradient trans hover:scale-[1.5] absolute
+  }
+  .background-animate{
+    background-size: 200%;
+    -webkit-animation: gradient-animation 5s ease infinite;
+    -moz-animation: gradient-animation 5s ease infinite;
+    animation: gradient-animation 5s ease infinite;
+  }
+}
+
+
+@keyframes gradient-animation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
