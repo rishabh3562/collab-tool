@@ -25,7 +25,7 @@ export default function Home({id}:props) {
   const account = new Account(client)
   const databases = new Databases(client)
 
-
+console.log("ide in home is:",id)
 
   return (
     <div className='flex relative bg-[url("/pattern.png")] bg-repeat bg-contain'>

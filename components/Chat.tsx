@@ -27,13 +27,20 @@ const Chat = ({ id }: { id: string }) => {
     const { isError, isLoading: chatIsLoading } = useQuery("chats", () => getChats(id as string), {
         onSuccess(data) {
             if (data.documents.length > 0) {
-                console.log(data.documents)
-                setChats(data.documents[0].chats as string[])
-                setChatId(data.documents[0]["$id"])
+                console.log("data.documents", data.documents);
+                console.log("data.documents[0]", data.documents[0]);
+
+                // Now that we know 'chats' exists, access it safely
+                const chats = data.documents[0].chats || [];  // Fallback to empty array if 'chats' is not found
+                setChats(chats as string[]);
+
+                setChatId(data.documents[0]["$id"]);
             }
         },
-    })
+    });
 
+    console.log("chats in chat.tsx usestate", chats);
+    console.log("chatId in chat.tsx usestate", chatId);
     useEffect(() => {
         if (chatId.length > 0) {
             const unsubscribe = client.subscribe([`databases.${process.env.NEXT_PUBLIC_APPWRITE_DB as string}.collections.${process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS as string}.documents.${chatId}`, 'files'], (response: any) => {
@@ -57,7 +64,7 @@ const Chat = ({ id }: { id: string }) => {
     )
     if (!isError && chats)
         return (
-            <div className={`w-[25%] absolute right-2 trans ${minimize?"bottom-2":"h-screen"} hidden xl:flex items-center px-5  `}>
+            <div className={`w-[25%] absolute right-2 trans ${minimize ? "bottom-2" : "h-screen"} hidden xl:flex items-center px-5  `}>
                 <div className='w-full flex flex-col rounded-md drop-shadow-2xl h-[calc(100%-2rem)] relative overflow-hidden text-white  bg-black/50'>
                     <div className='p-3 h-[50px] flex items-center justify-between text-lg font-semibold border-b-2 border-green-300 sticky bg-black'><p className='text-transparent bg-clip-text primary-gradient'>Team Chat</p>
                         {
