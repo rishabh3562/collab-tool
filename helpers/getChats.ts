@@ -7,7 +7,7 @@ const getChats = async (id: string) => {
   try {
     const res = await databases.listDocuments(
       process.env.NEXT_PUBLIC_APPWRITE_DB as string,
-      process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS as string,
+      process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS_COLLN as string,
       [Query.equal("project_id", [id])]
     );
 
@@ -33,7 +33,7 @@ export default getChats;
 
 // const getChats = async (id:string) => {
 //     const {client,account,databases} = getInitialClient()
-//     const res = await databases.listDocuments(process.env.NEXT_PUBLIC_APPWRITE_DB as string, process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS as string, [Query.equal("project_id", [id])])
+//     const res = await databases.listDocuments(process.env.NEXT_PUBLIC_APPWRITE_DB as string, process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS_COLLN as string, [Query.equal("project_id", [id])])
 //     console.log("res in chats",res)
 //     return res
 // }

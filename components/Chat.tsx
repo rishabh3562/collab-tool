@@ -43,7 +43,7 @@ const Chat = ({ id }: { id: string }) => {
     // console.log("chatId in chat.tsx usestate", chatId);
     useEffect(() => {
         if (chatId.length > 0) {
-            const unsubscribe = client.subscribe([`databases.${process.env.NEXT_PUBLIC_APPWRITE_DB as string}.collections.${process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS as string}.documents.${chatId}`, 'files'], (response: any) => {
+            const unsubscribe = client.subscribe([`databases.${process.env.NEXT_PUBLIC_APPWRITE_DB as string}.collections.${process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS_COLLN as string}.documents.${chatId}`, 'files'], (response: any) => {
                 setChats((chat) => response.payload.chats)
             });
             return () => unsubscribe()

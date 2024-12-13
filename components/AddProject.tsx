@@ -77,7 +77,7 @@ const AddProject = ({ show, setShow }: propTypes) => {
                 name: projectName
             })
                 .then(d => {
-                    databases.createDocument(process.env.NEXT_PUBLIC_APPWRITE_DB as string, process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS as string, ID.unique(), {
+                    databases.createDocument(process.env.NEXT_PUBLIC_APPWRITE_DB as string, process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS_COLLN as string, ID.unique(), {
                         project_id : d["$id"]
                     })
                     queryClient.invalidateQueries("projects")

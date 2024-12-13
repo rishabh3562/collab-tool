@@ -26,7 +26,7 @@ export const addProject = async (
     if (mode !== "solo") {
       const chatCreation = await databases.createDocument(
         process.env.NEXT_PUBLIC_APPWRITE_DB as string,
-        process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS as string,
+        process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS_COLLN as string,
         ID.unique(),
         {
           project_id: creation["$id"],
