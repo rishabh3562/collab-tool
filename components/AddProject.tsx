@@ -70,7 +70,7 @@ const AddProject = ({ show, setShow }: propTypes) => {
     const addProject = () => {
         if (projectName.length > 0) {
             const project_id = ID.unique()
-            console.log("project_id",projectId)
+            // console.log("project_id",projectId)
             databases.createDocument(process.env.NEXT_PUBLIC_APPWRITE_DB as string, process.env.NEXT_PUBLIC_APPWRITE_DB_PROJECTS_COLLN as string, project_id, {
                 admin: data?.email,
                 users: [data["$id"]],
@@ -96,7 +96,7 @@ const AddProject = ({ show, setShow }: propTypes) => {
             project_id: projectId
         })
             .then(d => {
-                console.log(d)
+                // console.log(d)
                 setSearchResult([])
                 setInvitations(((invitations) => [...invitations, { name, email }]))
             })

@@ -11,7 +11,7 @@ const sendChats = async (msg: string, messages: string[], chatId: string) => {
             chats: newArr
         })
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 
 }

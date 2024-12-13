@@ -27,8 +27,8 @@ const Chat = ({ id }: { id: string }) => {
     const { isError, isLoading: chatIsLoading } = useQuery("chats", () => getChats(id as string), {
         onSuccess(data) {
             if (data.documents.length > 0) {
-                console.log("data.documents", data.documents);
-                console.log("data.documents[0]", data.documents[0]);
+                // console.log("data.documents", data.documents);
+                // console.log("data.documents[0]", data.documents[0]);
 
                 // Now that we know 'chats' exists, access it safely
                 const chats = data.documents[0].chats || [];  // Fallback to empty array if 'chats' is not found
@@ -39,8 +39,8 @@ const Chat = ({ id }: { id: string }) => {
         },
     });
 
-    console.log("chats in chat.tsx usestate", chats);
-    console.log("chatId in chat.tsx usestate", chatId);
+    // console.log("chats in chat.tsx usestate", chats);
+    // console.log("chatId in chat.tsx usestate", chatId);
     useEffect(() => {
         if (chatId.length > 0) {
             const unsubscribe = client.subscribe([`databases.${process.env.NEXT_PUBLIC_APPWRITE_DB as string}.collections.${process.env.NEXT_PUBLIC_APPWRITE_DB_CHATS as string}.documents.${chatId}`, 'files'], (response: any) => {
@@ -52,7 +52,7 @@ const Chat = ({ id }: { id: string }) => {
     }, [chatId])
 
     const sendChatHandler = (e: React.SyntheticEvent) => {
-        console.log("clicked")
+        // console.log("clicked")
         e.preventDefault()
         if (msg.length < 1) return;
         sendChats(msg, chats as string[], chatId)

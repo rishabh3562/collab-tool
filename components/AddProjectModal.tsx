@@ -93,7 +93,7 @@ export default function MyModal({ isOpen, setIsOpen }: props) {
             project_id: projectId
         })
             .then(d => {
-                console.log(d)
+                // console.log(d)
                 setSearchResult([])
                 setInput("")
                 setInvitations(((invitations) => [...invitations, { name, email }]))

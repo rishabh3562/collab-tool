@@ -11,17 +11,17 @@ const getChats = async (id: string) => {
       [Query.equal("project_id", [id])]
     );
 
-    console.log("res in chats", res);
+    // console.log("res in chats", res);
 
     if (res.documents.length > 0) {
-      console.log("First document in chat:", res.documents[0]);
+    //   console.log("First document in chat:", res.documents[0]);
     } else {
-      console.log("No chats found for project_id:", id);
+    //   console.log("No chats found for project_id:", id);
     }
 
     return res;
   } catch (err) {
-    console.error("Error fetching chats:", err);
+    // console.error("Error fetching chats:", err);
     return { documents: [] };
   }
 };

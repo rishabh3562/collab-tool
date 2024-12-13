@@ -6,13 +6,13 @@ type args = {
 };
 
 const getProjects = async (databases: Databases, userId: string) => {
-  console.log("database", databases);
+  // console.log("database", databases);
   const data = await databases.listDocuments(
     process.env.NEXT_PUBLIC_APPWRITE_DB as string,
     process.env.NEXT_PUBLIC_APPWRITE_DB_PROJECTS_COLLN as string,
     [Query.search("users", userId)]
   );
-  console.log("data collections",data)
+  // console.log("data collections",data)
   // const data = await databases.listDocuments(process.env.NEXT_PUBLIC_APPWRITE_DB as string, process.env.NEXT_PUBLIC_APPWRITE_DB_PROJECTS_COLLN as string, [Query.search("users", userId)])
   return data.documents;
 };
