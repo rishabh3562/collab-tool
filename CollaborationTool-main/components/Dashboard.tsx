@@ -28,18 +28,19 @@ const Dashboard = () => {
 
     //get user data
     const { data, isError, isLoading } = useQuery<any>("userData", () => getClient(), {
+       
         onError: () => router.push("/login"),
         onSuccess: async (data) => {
-            if (data!=="undefined") {
+            if (data !== "undefined") {
                 // console.log(data)
                 const res = await getProjects(databases, data["$id"])
                 // console.log("res",res);
                 setProjectNumber(res.length)
             }
-            
+
         }
     })
-
+// console.log("user data in Dashboard",data)
 
 
 

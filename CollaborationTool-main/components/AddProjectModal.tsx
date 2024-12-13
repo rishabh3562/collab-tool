@@ -60,7 +60,7 @@ export default function MyModal({ isOpen, setIsOpen }: props) {
             queryClient.invalidateQueries('projects')
         }
         else alert("Some Error Occured")
-        
+
 
     }
 
@@ -71,6 +71,18 @@ export default function MyModal({ isOpen, setIsOpen }: props) {
             .catch(err => console.log(err))
 
     }
+    // const searchUser = (email: string) => {
+    //     setInput(email);
+
+    //     databases.listDocuments(
+    //         process.env.NEXT_PUBLIC_APPWRITE_DB as string,
+    //         process.env.NEXT_PUBLIC_APPWRITE_DB_USERS_COLLN as string,
+    //         [Query.equal("email", email)] // Use exact match
+    //     )
+    //         .then(d => setSearchResult(d.documents))
+    //         .catch(err => console.log(err));
+    // };
+
 
     const sendInvitation = (email: string, name: string) => {
         databases.createDocument(process.env.NEXT_PUBLIC_APPWRITE_DB as string, process.env.NEXT_PUBLIC_APPWRITE_DB_INVITATIONS_COLLN as string, ID.unique(), {
@@ -150,7 +162,7 @@ export default function MyModal({ isOpen, setIsOpen }: props) {
                                             </button>
                                             {show ? (
                                                 <>
-                                                 
+
                                                     <input value={input} onChange={(e) => searchUser(e.target.value)} type="text" className='p-2 text-lg px-3 font-medium bg-black/10 w-full mb-2 rounded-md' placeholder='Collaborator Email' />
 
 
@@ -167,7 +179,7 @@ export default function MyModal({ isOpen, setIsOpen }: props) {
                                                     </div> : (<></>)
                                                     }
 
-{
+                                                    {
                                                         invitations.map((x: { name: string, email: string }) => {
                                                             return (
                                                                 <div key={x.email} className='bg-white w-[98%] flex items-center my-2 rounded-md p-2 py-[0.75rem] text-black font-semibold '>{x.email} <p className='ml-auto text-sm font-normal'>(Invitaion sent)</p></div>
@@ -175,7 +187,7 @@ export default function MyModal({ isOpen, setIsOpen }: props) {
                                                         })
                                                     }
 
-                                                    <button onClick={() => router.push(`projects/${projectId}`)}  className='bg-black/10 rounded-md mt-2 p-3 grid place-items-center  w-full font-medium hover:bg-white trans text-white hover:text-black'>
+                                                    <button onClick={() => router.push(`projects/${projectId}`)} className='bg-black/10 rounded-md mt-2 p-3 grid place-items-center  w-full font-medium hover:bg-white trans text-white hover:text-black'>
                                                         {loading ? (<img src="/loading.gif" className='w-7 h-7' alt="loading" />) : "Get Started"}
                                                     </button>
 
